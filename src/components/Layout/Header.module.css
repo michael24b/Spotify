@@ -1,0 +1,55 @@
+.header h2 {
+  background-color: #dadbe4;
+  padding: 0.5rem 3rem;
+  height: 2rem;
+  margin: 0;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  background-color: #dadbe4;
+  height: 4rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.background {
+  background-color: #ffffff;
+  width: 100px;
+  height: 44px;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-right: 5rem;
+}
+
+.btn {
+  all: unset;
+  font: 16px system-ui;
+  color: rgb(44, 42, 42);
+  height: 100%;
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
+  flex-direction: row;
+}
+
+@media (max-width: 450px) {
+  .flex {
+    font-size: 0.7em;
+    height: 5rem;
+  }
+}
+
+@media (max-width: 515px) {
+  .background {
+    margin-right: 2rem;
+  }
+}

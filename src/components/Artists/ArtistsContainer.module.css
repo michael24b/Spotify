@@ -1,0 +1,33 @@
+.artists {
+  width: 90%;
+  margin: 1rem auto;
+  animation: meals-appear 1s ease-out forwards;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+@media (max-width: 700px) {
+  .artists {
+    width: 99%;
+  }
+}
+
+.artists ul {
+  list-style: none;
+  margin: 1rem;
+  padding: 0;
+  display: flex;
+}
+
+
+@keyframes artists-appear {
+  from {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

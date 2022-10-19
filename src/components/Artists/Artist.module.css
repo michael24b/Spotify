@@ -1,0 +1,57 @@
+li {
+  list-style: none;
+}
+
+.img {
+  width: 120px;
+  height: 100px;
+
+  margin: 0 auto 1rem;
+}
+
+.imgDiv {
+  display: flex;
+}
+
+.artistName {
+  max-width: 150px;
+  text-align: left;
+  font-size: 17px;
+}
+
+.followers {
+  max-width: 150px;
+  text-align: left;
+  margin-top: 0.5rem;
+  color: rgb(129, 125, 125);
+  font-size: 13px;
+}
+
+.preview {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  right: 0;
+  left: 0;
+  padding: 0.7rem;
+  font-size: 25px;
+}
+
+@media (max-width: 420px) {
+  .img {
+    width: 100px;
+    height: 70px;
+
+    margin: 0 auto 1rem;
+  }
+  .preview {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    right: 0;
+    left: 0;
+    padding: 0.7rem;
+    font-size: 15px;
+  }
+}
+
