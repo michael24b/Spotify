@@ -7,7 +7,7 @@ import { svActions } from "../../store/search-value";
 const CLIENT_ID = "254b931fc846457f85650434991bf284";
 // const CLIENT_SECRET = "87e41b8fe89b46a6b5f8b43ca45a93d3";
 const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
-const REDIRECT_URI = "http://localhost:3001";
+const REDIRECT_URI = "http://localhost:3000";
 const RESPONSE_TYPE = "token";
 
 const LoginBar = () => {
