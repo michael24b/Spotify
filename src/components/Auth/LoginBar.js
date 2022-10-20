@@ -1,90 +1,63 @@
-import classes from "./LoginBar.module.css";
 import Button from "./Button";
 import { Fragment } from "react";
-import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import { svActions } from "../../store/search-value";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { svActions } from "../../store/search-value";
 
-const API_KEY = "AIzaSyC2HVCMR7LKzhwr0UuIk0QtKdYWi0fNq1A";
-const URL =
-  "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=";
+const CLIENT_ID = "254b931fc846457f85650434991bf284";
+// const CLIENT_SECRET = "87e41b8fe89b46a6b5f8b43ca45a93d3";
+const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
+const REDIRECT_URI = "http://localhost:3001";
+const RESPONSE_TYPE = "token";
+
 const LoginBar = () => {
-  const [showForm, setShowForm] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const emailInputRef = useRef();
-  const passwordInputRef = useRef();
 
-  const showFormHandler = () => {
-    setShowForm(true);
-  };
+  useEffect(() => {
+    const hash = window.location.hash;
+    console.log("HASH", hash);
+    let token = window.localStorage.getItem("token");
+    console.log("TOKEN", token);
 
-  const submitHandler = (event) => {
-    event.preventDefault();
-    const enteredEmail = emailInputRef.current.value;
-    const enteredPassword = passwordInputRef.current.value;
+    if (!token && hash) {
+      token = hash
+        .substring(1)
+        .split("&")
+        .find((e) => e.startsWith("access_token"))
+        .split("=")[1];
+      console.log("TOKEN", token);
+      window.location.hash = "";
+      window.localStorage.setItem("token", token);
+    }
+    dispatch(svActions.setAccessToken(token));
+  }, [dispatch]);
 
-    setIsLoading(true);
+  // useEffect(() => {
+  //   const authParameters = {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/x-www-form-urlencoded",
+  //     },
+  //     body: `grant_type=client_credentials&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`,
+  //   };
 
-    fetch(URL + API_KEY, {
-      method: "POST",
-      body: JSON.stringify({
-        email: enteredEmail,
-        password: enteredPassword,
-        returnSecureToken: true,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => {
-        setIsLoading(false);
-        if (res.ok) {
-          return res.json();
-        } else {
-          return res.json().then((data) => {
-            let errorMessage = "Authentication failed!";
-            throw new Error(errorMessage);
-          });
-        }
-      })
-      .then((data) => {
-        dispatch(svActions.setToken(data.idToken));
-        localStorage.setItem("token", data.idToken);
-        navigate("/welcome", { replace: true });
-      })
-      .catch((err) => {
-        alert(err.message);
-      });
-  };
+  //   const token = fetch(
+  //     "https://accounts.spotify.com/api/token",
+  //     authParameters
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => dispatch(svActions.setAccessToken(data.access_token)));
+  //   setToken(token);
+  // }, [dispatch]);
 
   return (
     <Fragment>
-      {showForm && (
-        <section className={classes.auth}>
-          <h1>Login</h1>
-          <form onSubmit={submitHandler}>
-            <div className={classes.control}>
-              <label htmlFor="email">UserName</label>
-              <input type="email" id="email" required ref={emailInputRef} />
-            </div>
-            <div className={classes.control}>
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                id="password"
-                required
-                ref={passwordInputRef}
-              />
-            </div>
-            {isLoading ? <p>Sending request...</p> : <Button />}
-          </form>
-        </section>
-      )}
-      {!showForm && <Button onClick={showFormHandler} />}
+      <a
+        href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
+        style={{ textDecoration: "none" }}
+      >
+        <Button />
+      </a>
     </Fragment>
   );
 };

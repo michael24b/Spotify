@@ -2,15 +2,17 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  padding: 0 10%;
+  margin: 3rem 0;
 }
 
 .title {
-  margin-left: 3rem;
+  margin-left: 1rem;
   font-size: 2rem;
 }
 
 .subtitle {
-  margin-left: 3rem;
+  margin-left: 1rem;
   font-size: 1rem;
   color: rgb(129, 125, 125);
   font-weight: 300;
@@ -27,14 +29,12 @@
   padding: 0 2rem;
 }
 
-
 .albums ul {
   list-style: none;
   margin: 1rem;
   padding: 0;
   display: flex;
 }
-
 
 @keyframes albums-appear {
   from {
@@ -45,45 +45,5 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@media (max-width: 900px) {
-  .albums {
-    /* max-width: 40rem; */
-    width: 95%;
-    margin: 1rem auto;
-    animation: meals-appear 1s ease-out forwards;
-    justify-content: center;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 0 1rem;
-  }
-}
-
-@media (max-width: 800px) {
-  .albums {
-    width: 99%;
-    margin: 1rem auto;
-    animation: meals-appear 1s ease-out forwards;
-    justify-content: center;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 0 1rem;
-  }
-}
-
-@media (max-width: 500px) {
-  .albums {
-    width: 99%;
-    margin: 1rem auto;
-    animation: meals-appear 1s ease-out forwards;
-    justify-content: center;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 0;
   }
 }

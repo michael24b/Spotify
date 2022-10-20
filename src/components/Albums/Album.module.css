@@ -2,19 +2,33 @@ li {
   list-style: none;
 }
 
-.img {
-  width: 150px;
-  height: 70px;
+.card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  background-color: white;
+  margin: 1rem;
+  width: 230px;
+  height: 330px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
 
-  margin: 0 auto 1rem;
+.img {
+  width: 230px;
+  height: 100%;
 }
 
 .imgDiv {
-  display: flex;
+  object-fit: cover;
+  height: 60%;
+}
+
+.albumInfo {
+  margin: 12px;
 }
 
 .albumName {
-  max-width: 150px;
+  max-width: 200px;
   text-align: left;
   font-size: 17px;
 }
@@ -49,53 +63,9 @@ li {
   font-size: 0.7em;
   padding: 0.5rem;
   background-color: #dadbe4;
-  border-bottom-left-radius: 14px;
-  border-bottom-right-radius: 14px;
 }
 
 a {
   text-decoration: none;
   color: rgb(129, 125, 125);
-}
-
-@media (max-width: 900px) {
-  .img {
-    width: 120px;
-    height: 70px;
-    margin: 0 auto 1rem;
-  }
-  .preview {
-    position: absolute;
-    bottom: 0;
-    text-align: center;
-    right: 0;
-    left: 0;
-    font-size: 0.7em;
-    padding: 0.5rem;
-    background-color: #dadbe4;
-  }
-}
-
-@media (max-width: 450px) {
-  .img {
-    width: 100px;
-    height: 70px;
-    margin: 0 auto 1rem;
-  }
-  .preview {
-    position: absolute;
-    bottom: 0;
-    text-align: center;
-    right: 0;
-    left: 0;
-    font-size: 0.7em;
-    padding: 0.5rem;
-    background-color: #dadbe4;
-  }
-
-  .albumName {
-    max-width: 150px;
-    text-align: left;
-    font-size: 13px;
-  }
 }

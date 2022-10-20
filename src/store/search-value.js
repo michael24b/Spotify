@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialToken = localStorage.getItem("token");
-
 const searchValue = createSlice({
   name: "sv",
   initialState: {
@@ -9,7 +7,6 @@ const searchValue = createSlice({
     inputValue: "",
     artists: [],
     albums: [],
-    loginToken: initialToken,
     currentArtistName: "",
   },
 
@@ -29,9 +26,6 @@ const searchValue = createSlice({
 
     setCurrentArtistName(state, action) {
       state.currentArtistName = action.payload;
-    },
-    setToken(state, action) {
-      state.loginToken = action.payload;
     },
   },
 });
